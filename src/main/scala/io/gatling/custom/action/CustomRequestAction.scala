@@ -12,7 +12,7 @@ class CustomRequestAction(val next: Action, val statsEngine: StatsEngine) extend
   override def name: String = genName("customRequest")
 
   override def execute(session: Session): Unit = {
-    val responseTimings = ResponseTimings(1, 100)
+    val responseTimings = ResponseTimings(System.currentTimeMillis(), System.currentTimeMillis()+100)
     statsEngine.logResponse(session, name, responseTimings, OK, None, None)
     next ! session.logGroupRequest(responseTimings.responseTime,OK)
   }
