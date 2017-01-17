@@ -8,5 +8,5 @@ class CustomSimulation extends Simulation {
   .repeat(100) {
     exec(new CustomActionBuilder())
   }
-  setUp(scn.inject(rampUsers(1) over (10 second)))
+  setUp(scn.inject(rampUsers(100) over (10 second)))
 }
